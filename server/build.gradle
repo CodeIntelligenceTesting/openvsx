@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.gatling)
     alias(libs.plugins.rewrite)
     id 'maven-publish'
+    id "com.code-intelligence.cifuzz" version "1.25.0"
 }
 
 def jooqSrcDir = 'src/main/jooq-gen'
@@ -150,6 +151,7 @@ dependencies {
     testImplementation libs.testcontainers.elasticsearch
     testImplementation libs.testcontainers.localstack
     testImplementation libs.testcontainers.junit.jupiter
+    testImplementation libs.jazzer.junit
 
     testRuntimeOnly libs.junit.jupiter.engine
     testRuntimeOnly libs.testcontainers.postgresql
@@ -237,6 +239,16 @@ tasks.register('unitTests', Test) {
     exclude 'org/eclipse/openvsx/cache/CacheServiceTest.class'
     exclude 'org/eclipse/openvsx/repositories/RepositoryServiceSmokeTest.class'
     exclude 'org/eclipse/openvsx/storage/AwsStorageServiceIntegrationTest.class'
+}
+
+tasks.register('fuzzTests', Test) {
+    description = 'Runs fuzz tests (Jazzer-based).'
+    group = 'verification'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    useJUnitPlatform()
+    include '**/fuzz/*FuzzTest.class'
+    jvmArgs = ['--enable-native-access=ALL-UNNAMED']
 }
 
 tasks.register('s3IntegrationTests', Test) {
