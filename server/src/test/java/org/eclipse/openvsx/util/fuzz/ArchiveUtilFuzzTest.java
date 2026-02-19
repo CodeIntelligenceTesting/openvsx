@@ -4,6 +4,7 @@ import com.code_intelligence.jazzer.junit.FuzzTest;
 import com.code_intelligence.jazzer.mutation.annotation.NotNull;
 import com.code_intelligence.jazzer.mutation.annotation.WithUtf8Length;
 import org.eclipse.openvsx.util.ArchiveUtil;
+import org.junit.jupiter.api.Tag;
 
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
@@ -11,6 +12,7 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+@Tag("fuzz")
 class ArchiveUtilFuzzTest {
 
     @FuzzTest

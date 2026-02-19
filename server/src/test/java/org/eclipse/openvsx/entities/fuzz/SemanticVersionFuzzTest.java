@@ -5,9 +5,11 @@ import com.code_intelligence.jazzer.mutation.annotation.NotNull;
 import com.code_intelligence.jazzer.mutation.annotation.WithUtf8Length;
 import com.code_intelligence.jazzer.mutation.annotation.Ascii;
 import org.eclipse.openvsx.entities.SemanticVersion;
+import org.junit.jupiter.api.Tag;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Tag("fuzz")
 class SemanticVersionFuzzTest {
 
     @FuzzTest

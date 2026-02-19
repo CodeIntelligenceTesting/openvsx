@@ -4,7 +4,9 @@ import com.code_intelligence.jazzer.junit.FuzzTest;
 import com.code_intelligence.jazzer.mutation.annotation.NotNull;
 import com.code_intelligence.jazzer.mutation.annotation.WithUtf8Length;
 import org.eclipse.openvsx.ExtensionValidator;
+import org.junit.jupiter.api.Tag;
 
+@Tag("fuzz")
 class ExtensionValidatorFuzzTest {
 
     private final ExtensionValidator validator = new ExtensionValidator();

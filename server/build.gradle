@@ -234,7 +234,9 @@ tasks.register('unitTests', Test) {
     group = 'verification'
     testClassesDirs = sourceSets.test.output.classesDirs
     classpath = sourceSets.test.runtimeClasspath
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags 'fuzz'
+    }
     exclude 'org/eclipse/openvsx/IntegrationTest.class'
     exclude 'org/eclipse/openvsx/cache/CacheServiceTest.class'
     exclude 'org/eclipse/openvsx/repositories/RepositoryServiceSmokeTest.class'
@@ -246,8 +248,9 @@ tasks.register('fuzzTests', Test) {
     group = 'verification'
     testClassesDirs = sourceSets.test.output.classesDirs
     classpath = sourceSets.test.runtimeClasspath
-    useJUnitPlatform()
-    include '**/fuzz/*FuzzTest.class'
+    useJUnitPlatform {
+        includeTags 'fuzz'
+    }
     jvmArgs = ['--enable-native-access=ALL-UNNAMED']
 }
 
