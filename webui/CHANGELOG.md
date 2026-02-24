@@ -2,6 +2,20 @@
 
 This change log covers only the frontend library (webui) of Open VSX.
 
+## [v0.19.0] (unreleased)
+
+### Changed
+
+- Switch from webpack to vite for building the bundle ([#1399](https://github.com/eclipse/openvsx/pull/1399))
+
+### Fixed
+
+- Check `Retry-After` http header when receiving `429` responses from the server ([#1637](https://github.com/eclipse/openvsx/pull/1637))
+
+### Dependencies
+
+- Bump @isaacs/brace-expansion from `5.0.0` to `5.0.1` ([#1638](https://github.com/eclipse/openvsx/pull/1638))
+
 ## [v0.18.0] (Feb. 2026)
 
 ### Added
